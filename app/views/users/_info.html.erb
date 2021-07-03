@@ -15,7 +15,7 @@
   <tr>
     <th>followers</th>
     <th><%= link_to user.followers.count, user_followers_path(user.id) %></th>
-  </tr>user_followings_path(user.id)
+  </tr>
 </table>
 
 <% if user.id == current_user.id  %>
@@ -24,9 +24,9 @@
   </div>
 <% else %>
   <% if current_user.following?(user) %>
-    <%= link_to "Unfollow", user_relationships_path(user.id), method: :delete %>
+    <%= link_to "フォロー外す", user_relationships_path(user.id), method: :delete, class: "btn btn-success" %>
   <% else %>
-    <%= link_to "Follow", user_relationships_path(user.id), method: :past %>
+    <%= link_to "フォロー", user_relationships_path(user.id), method: :past, class: "btn btn-success" %>
   <% end %>
 <% end  %>
   
