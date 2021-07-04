@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'relationships/create'
-  get 'relationships/destroy'
   get 'home/about' => 'homes#about'
   get '/search' => 'search#search'
   root 'homes#top'

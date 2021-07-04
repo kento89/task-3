@@ -9,8 +9,8 @@
             <td><%= book_comment.comment %></td>
             <td>
               <% if book_comment.user == current_user %>
-              <div class="comment-delete">
-                <%= link_to "Destroy", book_book_comments_path(book_comment.book, book_comment), method: :delete, class: "btn btn-danger mb-3" %>
+              <div id="comment">
+                <%= link_to "Destroy", book_book_comments_path(book_comment.book, book_comment), method: :delete, remote: true, class: "btn btn-danger mb-3" %>
               </div>
               <% end  %>
             </td>
