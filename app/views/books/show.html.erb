@@ -28,18 +28,19 @@
             
           </td>
           
-          <td>
-            <p>コメント数：<%= @book.book_comments.count  %></p>
+          <td id="count">
+            <%= render 'book_comments/count', book: @book %>
           </td>
+          
         </tr>
       </table>
       
-      <div class="pb-2" id="comments">
+      <div class="pb-2" id="comments_d">
         <%= render 'book_comments/comment', book: @book %>
       </div>
       
-       <dev class="new-comment">
-        <%= render 'book_comments/form', book: @book %>
+       <div class="new-comment" id="comments">
+        <%= render 'book_comments/form', book: @book, book_comment: @book_comment %>
        </div>
     </div>
   </div>
