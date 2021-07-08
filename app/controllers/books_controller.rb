@@ -1,10 +1,29 @@
 class BooksController < ApplicationController
-
+  impressionist actions: [:index, :show]
+  
   def show
     @book = Book.find(params[:id])
+    impressionist(@book, nil, unique: [:session_hash])
     @users = @book.user
     @newbook = Book.new
     @book_comment = BookComment.new
+    @currentUserEntry=Entry.where(user_id: current_user.id)
+    @userEntry=Entry.where(user_id: @users.id)
+    unless @users.id == current_user.id
+      @currentUserEntry.each do |cu|
+        @userEntry.each do |u|
+          if cu.room_id == u.room_id then
+            @isRoom=true
+            @roomId=cu.room_id
+          end
+        end
+      end
+      if @isRoom
+      else
+        @room=Room.new
+        @entry=Entry.new
+      end
+    end
   end
 
   def index
