@@ -3,7 +3,7 @@ class BooksController < ApplicationController
   
   def show
     @book = Book.find(params[:id])
-    impressionist(@book, nil, unique: [:session_hash])
+    # impressionist(@book, nil, unique: [:session_hash])
     @users = @book.user
     @newbook = Book.new
     @book_comment = BookComment.new

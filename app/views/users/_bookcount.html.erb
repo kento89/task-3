@@ -1,0 +1,25 @@
+<table border="2">
+        <tr>
+            <th>今日の投稿数</th>
+            <th>前日の投稿数</th>
+            <th>前日比</th>
+        </tr>
+        <tr>
+            <td><%= Book.created_today.count %></td>
+            <td><%= Book.created_yesterday.count %></td>
+            <td><%= (Book.created_today.count) - (Book.created_yesterday.count) %></td>
+        </tr>
+</table>
+
+<table border="2">
+        <tr>
+            <th>今週の投稿数</th>
+            <th>前週の投稿数</th>
+            <th>前週比</th>
+        </tr>
+        <tr>
+            <td><%=current_user.books.where('created_at > ?', 7.day.ago).count%></td>
+            <td><%= Book.where(created_at: 2.week.ago.beginning_of_day..1.week.ago.end_of_day).count %></td>
+            <td><%= (current_user.books.where('created_at > ?', 7.day.ago).count) - (Book.where(created_at: 2.week.ago.beginning_of_day..1.week.ago.end_of_day).count) %></td>
+        </tr>
+</table>
