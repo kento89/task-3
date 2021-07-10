@@ -22,6 +22,7 @@ class UsersController < ApplicationController
     end
     @books = @user.books
     @book = Book.new
+    @book_counts = 0
   end
 
   def index

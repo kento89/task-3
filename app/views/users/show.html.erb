@@ -11,7 +11,11 @@
       <h2>Books</h2>
       <%= render 'books/index',books: @books %>
       <h2>投稿数の前日比・前週比</h2>
-      <%= render partial: 'users/bookcount', locals: {todayBooks: @todayBooks, yesterdayBook: @yesterdayBook, counts: @counts} %>
+      <%= render 'users/bookcount' %>
+      <h2>7日分の投稿数</h2>
+      <%= render partial: 'books/daycount', locals: {cumulative: @cumulative} %>
+      <h2>日付の検索機能</h2>
+      <%= render partial: 'searches/search-calender' %>
     </div>
   </div>
 </div> 

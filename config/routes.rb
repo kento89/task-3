@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'home/about' => 'homes#about'
   get '/search' => 'search#search'
+  # get 'search_carender' => 'search#search_carender'
   root 'homes#top'
   devise_for :users
   
@@ -17,5 +18,8 @@ Rails.application.routes.draw do
   
   resources :messages, only: [:create]
   resources :rooms, only: [:create, :show]
+  resource :search, only: [] do
+    get :search_carender, on: :collection
+  end
   
 end

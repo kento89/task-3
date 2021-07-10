@@ -1,0 +1,37 @@
+<table border="2">
+    <tr>
+        <th>6日前</th>
+        <th>5日前</th>
+        <th>4日前</th>
+        <th>3日前</th>
+        <th>2日前</th>
+        <th>1日前</th>
+        <th>今日</th>
+    </tr>
+    <tr border="">
+        <td><%= Book.created_a_week_ago.count %></td>
+        <td><%= Book.created_six_days_ago.count %></td>
+        <td><%= Book.created_five_days_ago.count %></td>
+        <td><%= Book.created_force_days_ago.count %></td>
+        <td><%= Book.created_three_days_ago.count %></td>
+        <td><%= Book.created_yesterday.count %></td>
+        <td><%= Book.created_today.count %></td>
+    </tr>
+</table>
+
+<canvas id="myChart" width="200" height="100"> </canvas>
+
+<script> 
+    var ctx = document.getElementById("myChart").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',                      　
+        data: { 
+                label: "累積投稿数",
+                data: <%= cumulative %>, 
+                backgroundColor: 'rgba(255, 80, 120, 0.2)',
+                borderColor: 'rgba(255, 80, 120, 1.0)',
+                type: 'line', 
+            }]
+        },
+    });
+</script>

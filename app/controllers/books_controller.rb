@@ -6,6 +6,7 @@ class BooksController < ApplicationController
     # impressionist(@book, nil, unique: [:session_hash])
     @users = @book.user
     @newbook = Book.new
+    
     @book_comment = BookComment.new
     @currentUserEntry=Entry.where(user_id: current_user.id)
     @userEntry=Entry.where(user_id: @users.id)

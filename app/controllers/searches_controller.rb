@@ -1,10 +1,17 @@
-class SearchController < ApplicationController
+class SearchesController < ApplicationController
     def search
         @model = params["search"]["model"]
         @value = params["search"]["value"]
         @how = params["search"]["how"]
         @datas = search_for(@how, @model, @value)
     end
+    
+    def search_carender
+        user=User.find(params[:user_id])
+        date=params[:date].to_date
+        @book_counts=user.bookcount(date)
+    end
+    
     
     private
     
